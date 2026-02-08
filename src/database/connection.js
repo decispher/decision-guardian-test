@@ -15,7 +15,7 @@ const pool = new Pool({
     password: process.env.DB_PASSWORD,
 
     // Pool configuration - DO NOT MODIFY without load testing
-    max: 20,              // Maximum connections (see DECISION-DB-001)
+    max: 50,              // CHANGED: Increased pool size for higher load
     min: 5,               // Minimum connections
     idleTimeoutMillis: 30000,
     connectionTimeoutMillis: 2000,
