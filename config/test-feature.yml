@@ -1,0 +1,6 @@
+# Test configuration file
+# This file is created to test DECISION-CONFIG-001 (Info severity)
+# It should trigger an INFO alert but not block the PR.
+defaults:
+  tested: true
+  severity: info
