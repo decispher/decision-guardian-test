@@ -1,6 +1,6 @@
 /**
  * Users API Endpoints
- * Part of Public API v1 - See DECISION-API-001
+ * Part of Public API v1 - See DECISION-API-001 (Warning Severity Test)
  */
 
 const express = require('express');
