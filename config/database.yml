@@ -1,0 +1,37 @@
+# Database Configuration
+# See DECISION-DB-001 and DECISION-CONFIG-001
+
+development:
+  host: localhost
+  port: 5432
+  database: app_development
+  pool:
+    max: 20
+    min: 5
+    acquire: 30000
+    idle: 10000
+
+test:
+  host: localhost
+  port: 5432
+  database: app_test
+  pool:
+    max: 10
+    min: 2
+    acquire: 30000
+    idle: 10000
+
+production:
+  host: ${DB_HOST}
+  port: ${DB_PORT}
+  database: ${DB_NAME}
+  ssl: true
+  pool:
+    max: 20        # CRITICAL: Do not change without load testing
+    min: 5
+    acquire: 30000
+    idle: 10000
+  replication:
+    read:
+      host: ${DB_READ_HOST}
+      port: ${DB_READ_PORT}

@@ -1,0 +1,36 @@
+name: Decision Guardian
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  check-decisions:
+    name: Check Architectural Decisions
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Run Decision Guardian
+        id: decision-check
+        uses: DecispherHQ/decision-guardian@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          decision_file: '.decispher/decisions.md'
+          fail_on_critical: true
+          fail_on_error: false
+      
+      - name: Output Results
+        if: always()
+        run: |
+          echo "Matches Found: ${{ steps.decision-check.outputs.matches_found }}"
+          echo "Critical Count: ${{ steps.decision-check.outputs.critical_count }}"
+          echo "Metrics: ${{ steps.decision-check.outputs.metrics }}"
