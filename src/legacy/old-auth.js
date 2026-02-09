@@ -10,5 +10,7 @@
 // Legacy code for testing deprecated decision status
 module.exports = {
     deprecated: true,
-    message: 'This file is only for testing deprecated decisions'
+    message: 'This file is only for testing deprecated decisions',
+    testStatus: 'deprecated check',
+    newField: 'testing-change' // Added to verify if this triggers an alert (should be ignored)
 };
