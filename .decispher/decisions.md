@@ -5,9 +5,20 @@
 **Date**: 2024-03-15
 **Severity**: Critical
 
-**Files**:
-- `src/database/connection.js`
-- `config/database.yml`
+**Rules**:
+```json
+{
+  "type": "file",
+  "pattern": "{src/database/connection.js,config/database.yml}",
+  "content_rules": [
+    {
+      "mode": "regex",
+      "pattern": "max:\\s*(?!20\\b)\\d+",
+      "flags": "i"
+    }
+  ]
+}
+```
 
 ### Context
 
